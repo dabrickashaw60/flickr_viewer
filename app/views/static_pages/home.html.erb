@@ -1,0 +1,14 @@
+<%= form_with url: root_path, method: :get, local: true do %>
+  <%= label_tag :user_id, "Enter Flickr User ID:" %>
+  <%= text_field_tag :user_id %>
+  <%= submit_tag "View Photos" %>
+<% end %>
+
+<% if @photos.present? %>
+  <h2>Photos:</h2>
+  <div>
+    <% @photos.each do |photo| %>
+      <%= image_tag Flickr.url(photo) %>
+    <% end %>
+  </div>
+<% end %>
